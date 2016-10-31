@@ -10,15 +10,22 @@ import javax.swing.JButton;
 import javax.swing.JEditorPane;
 import javax.swing.JScrollBar;
 import javax.swing.JToggleButton;
+
+import snippet.CreatePDF;
+
 import javax.swing.JMenuBar;
+import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 
 public class sso extends JFrame {
 	private JTextField textField;
 	private JButton btnAllocateStudents;
+	public Object[][] rows;
+	public String[][] array;
 	
 	public sso() {
+		setTitle("SSO");
 		setSize(500, 500);
 		getContentPane().setLayout(null);
 
@@ -53,12 +60,6 @@ public class sso extends JFrame {
 		});
 		menuBar.add(btnAddStudent);
 
-		JButton btnGeneratePdf = new JButton("Generate PDF");
-		menuBar.add(btnGeneratePdf);
-		
-		JButton btnAddPat = new JButton("Add Pat");
-		menuBar.add(btnAddPat);
-
 		JButton btnLogout = new JButton("Logout");
 		btnLogout.setBounds(388, 431, 86, 23);
 		btnLogout.addActionListener(new ActionListener() {
@@ -69,8 +70,8 @@ public class sso extends JFrame {
 		});	
 		getContentPane().add(btnLogout);
 
-		Object[] cols = {"Uob","Name","Year","Email","Address","Phone","Dep.","Pat"};
-		Object[][] rows =new String[10][8];
+		Object[] cols = {"Uob","Name","Year","Email","City","Phone","Pat","Dept."};
+	 rows =new String[8][8];
 		Database db = new Database();
 		String queryStudent="select * from student";
 		db.connection(queryStudent);
@@ -96,6 +97,13 @@ public class sso extends JFrame {
 						}
 						break;
 					}
+					
+					array= new String[8][8];
+					for(int i=0;i<8;i++){
+						for(int j=0;j<8;j++){
+							array[i][j]=(String) rows[i][j];
+						}
+					}
 
 				}
 			} catch (SQLException e) {
@@ -110,6 +118,18 @@ public class sso extends JFrame {
 			JScrollPane scrollPane = new JScrollPane(table);
 			scrollPane.setBounds(22, 89, 452, 319);
 			getContentPane().add(scrollPane);
+			
+					JButton btnGeneratePdf = new JButton("Get PDF");
+					btnGeneratePdf.setBounds(250, 431, 128, 21);
+					
+					btnGeneratePdf.addActionListener(new ActionListener() {
+						public void actionPerformed(ActionEvent arg0) {
+							CreatePDF c = new CreatePDF();
+							c.createPDF(array, "ssoPdf");
+							JOptionPane.showMessageDialog(null, "Pdf has been generated");
+						}
+					});
+					getContentPane().add(btnGeneratePdf);
 			
 			setVisible(true);
 

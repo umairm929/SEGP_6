@@ -26,7 +26,7 @@ public class editInfoStudent extends JFrame{
 	
 	
 	public editInfoStudent(int uob){
-		
+		setTitle("edit info student");
 		String uob1 = null;
 		String name1 = null;
 		String year1=null;
@@ -162,7 +162,7 @@ public class editInfoStudent extends JFrame{
 	}
 
 	public static void main(String[] args) {
-		new editInfoStudent(14031200);
+		//new editInfoStudent(14031200);
 
 	}
 

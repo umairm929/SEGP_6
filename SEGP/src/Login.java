@@ -1,3 +1,4 @@
+import java.awt.Color;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -8,6 +9,9 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
+
+import com.itextpdf.text.Font;
+
 import javax.swing.JPasswordField;
 
 public class Login extends JFrame implements ActionListener {
@@ -21,6 +25,7 @@ public class Login extends JFrame implements ActionListener {
 	private JPasswordField passwordField;
 
 	public Login(){
+		setTitle("Login");
 
 		jt1 = new JTextField(8);
 		jt1.setBounds(183, 115, 134, 20);
@@ -41,6 +46,12 @@ public class Login extends JFrame implements ActionListener {
 		passwordField = new JPasswordField();
 		passwordField.setBounds(183, 169, 134, 20);
 		getContentPane().add(passwordField);
+		
+		JLabel soft = new JLabel("Personal Academic Tutoring System");
+	    soft.setForeground(Color.BLUE);
+		
+		soft.setBounds(140, 39, 252, 14);
+		getContentPane().add(soft);
 		setSize(500, 500);
 		setVisible(true);
 	}
@@ -48,9 +59,7 @@ public class Login extends JFrame implements ActionListener {
 	public  void HideGui(){
 		setVisible(false);
 	}
-	public  void ShowGui(){
-		setVisible(true);
-	}
+	
 
 
 
@@ -72,13 +81,18 @@ public class Login extends JFrame implements ActionListener {
 		try {
 			if(verify.rs.next())
 			{
+				System.out.println("Enter In Next");
 				String personName = verify.rs.getString(5);
+				System.out.println(personName);
 
 				if(personName.equals("student")){
+					System.out.println("student ha");
 					String uob = verify.rs.getString(1);
+					System.out.println(uob);
 					String student= "select * from student where uob=\""+uob+"\"";
 					verify.connection(student);
 					if(verify.rs.next()){
+						System.out.println("population");
 						String name1 = verify.rs.getString(2);
 						String uob1 = verify.rs.getString(1);
 						String year = verify.rs.getString(3);
@@ -90,6 +104,7 @@ public class Login extends JFrame implements ActionListener {
 						String timing="select * from teacher where student1=\""+name1+"\" or student2=\""+name1+"\" or student3=\""+name1+"\" or student4=\""+name1+"\" or student5=\""+name1+"\" or student6=\""+name1+"\" or student7=\""+name1+"\" or student8=\""+name1+"\"";
 						verify.connection(timing);
 						if(verify.rs.next()){
+							System.out.println("gui");
 							String guiTiming = verify.rs.getString(5);
 							Student s =  new Student(name1,uob1,year,department,pat,guiTiming,contact,address);
 							HideGui();

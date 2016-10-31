@@ -14,6 +14,9 @@ import com.mysql.jdbc.DatabaseMetaData;
 public class deleteStudent extends JFrame {
 	private JTextField nametf;
 	private JTextField uobtf;
+	public void guiHider(){
+		setVisible(false);
+	}
 	
 	public deleteStudent(){
 
@@ -81,6 +84,7 @@ public class deleteStudent extends JFrame {
 				
 				
 				
+				guiHider();
 	
 			}
 		});
@@ -100,7 +104,7 @@ public class deleteStudent extends JFrame {
 	}
 
 	public static void main(String[] args) {
-		new  deleteStudent();
+		//new  deleteStudent();
 
 	}
 

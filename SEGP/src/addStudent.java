@@ -3,6 +3,7 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
@@ -41,7 +42,7 @@ public class addStudent extends JFrame {
 
 
 
-
+         setTitle("add Student");
 		getContentPane().setLayout(null);
 
 		JLabel lblName = new JLabel("Name");
@@ -136,10 +137,6 @@ public class addStudent extends JFrame {
 		});
 		getContentPane().add(btnAdd);
 
-		JCheckBox chckbxAutoAssign = new JCheckBox("Auto Assign");
-		chckbxAutoAssign.setBounds(262, 114, 97, 23);
-		getContentPane().add(chckbxAutoAssign);
-
 		JLabel lblEmail = new JLabel("Email");
 		lblEmail.setBounds(22, 211, 46, 14);
 		getContentPane().add(lblEmail);
@@ -148,7 +145,7 @@ public class addStudent extends JFrame {
 		textField_7.setBounds(93, 214, 171, 20);
 		getContentPane().add(textField_7);
 		textField_7.setColumns(10);
-
+		//getContentPane().setBackground(Color.white);
 		setTitle("Add Student");
 		setSize(500	, 300);
 		setVisible(true);

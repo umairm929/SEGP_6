@@ -34,7 +34,7 @@ public class Pat extends JFrame {
 	public Pat(String name, String load, String Slot) {
 		
 		
-		
+		setTitle("Pat");
 		Object[] cols = {"Uob","Name","Year","Email","Address","Phone","Dep.","Pat"};
 		Object[][] rows =new String[10][8];
 		Database db = new Database();
@@ -165,7 +165,7 @@ public class Pat extends JFrame {
 	
 
 	public static void main(String[] args) {
-		Pat a = new Pat("abirah ahmad","Partial","4");
+		//Pat a = new Pat("abirah ahmad","Partial","4");
 	}
 	private static void addPopup(Component component, final JPopupMenu popup) {
 		component.addMouseListener(new MouseAdapter() {

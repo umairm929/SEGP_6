@@ -12,7 +12,7 @@ public class UpdateInfo extends JFrame {
 		setVisible(false);
 	}
 	public UpdateInfo(String address, String contact, String name) {
-		
+		setTitle("update info");
 		setSize(250, 250);
 		getContentPane().setLayout(null);
 		
@@ -46,6 +46,8 @@ public class UpdateInfo extends JFrame {
 				updateWrite.write(queryupdate);
 				guiHider();
 				
+				
+				
 			}
 		});
 		btnSave.setBounds(131, 134, 66, 23);
@@ -54,7 +56,7 @@ public class UpdateInfo extends JFrame {
 	}
 
 	public static void main(String[] args) {
-		new UpdateInfo("Faisalabaad","0345123456","faisal");
+		//new UpdateInfo("Faisalabaad","0345123456","faisal");
 
 	}
 

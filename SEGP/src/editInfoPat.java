@@ -6,7 +6,6 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
 public class editInfoPat extends JFrame{
-	private JTextField load;
 	private JTextField slot;
 	
 	
@@ -17,19 +16,9 @@ public class editInfoPat extends JFrame{
 	public editInfoPat(String name,String address, String contact ) {
 		
 		
-		
+		setTitle("edit info pat");
 		setSize(250,250);
 		getContentPane().setLayout(null);
-		
-		JLabel lblLoad = new JLabel("Load");
-		lblLoad.setBounds(21, 34, 46, 14);
-		getContentPane().add(lblLoad);
-		
-		load = new JTextField();
-		load.setBounds(104, 31, 86, 20);
-		getContentPane().add(load);
-		load.setColumns(10);
-		load.setText(address);
 		
 		JLabel lblTiming = new JLabel("Free Slot");
 		lblTiming.setBounds(21, 69, 46, 14);
@@ -44,10 +33,9 @@ public class editInfoPat extends JFrame{
 		JButton btnNewButton = new JButton("Update");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				String load1 = load.getText();
 				String slot1 = slot.getText();
 				Database updateWrite = new Database();
-				String queryupdate = "update teacher set busy=\""+load1+"\" , slot=\""+slot1+"\" where name=\""+name+"\"";
+				String queryupdate = "update teacher set slot=\""+slot1+"\" where name=\""+name+"\"";
 				updateWrite.write(queryupdate);
 				guiHider();
 				

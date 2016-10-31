@@ -1,12 +1,19 @@
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import javax.swing.JButton;
 
 public class ChangeOfPat extends JFrame {
-	private JTextField textField;
-	private JTextField textField_1;
-	public ChangeOfPat(String patname) {
+	private JTextField patName;
+	private JTextField reason;
+	public void guiHider(){
+		setVisible(false);
+	}
+	public ChangeOfPat(String patname, String uob) {
 		
 		
 		setSize(250, 250);
@@ -20,30 +27,45 @@ public class ChangeOfPat extends JFrame {
 		lblNewPatName.setBounds(10, 64, 89, 14);
 		getContentPane().add(lblNewPatName);
 		
-		textField = new JTextField();
-		textField.setBounds(109, 64, 99, 20);
-		getContentPane().add(textField);
-		textField.setColumns(10);
+		patName= new JTextField();
+		patName.setBounds(109, 64, 99, 20);
+		getContentPane().add(patName);
+		patName.setColumns(10);
 		
 		JButton btnRequest = new JButton("Request");
 		btnRequest.setBounds(119, 181, 93, 23);
+		btnRequest.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+				String pname=patName.getText();
+				String reason1=reason.getText();
+				int uobQ=Integer.parseInt(uob);
+				
+				String query="insert into request values("+uobQ+",\""+pname+"\",\""+reason1+"\",NULL)";
+				Database db = new Database();
+				db.write(query);
+				guiHider();
+				
+				
+			}
+		});
 		getContentPane().add(btnRequest);
 		
 		JLabel lblReason = new JLabel("Reason ");
 		lblReason.setBounds(20, 95, 46, 14);
 		getContentPane().add(lblReason);
 		
-		textField_1 = new JTextField();
-		textField_1.setBounds(109, 95, 103, 75);
-		getContentPane().add(textField_1);
-		textField_1.setColumns(10);
+		reason = new JTextField();
+		reason.setBounds(109, 95, 103, 75);
+		getContentPane().add(reason);
+		reason.setColumns(10);
 		setVisible(true);
 		
 	}
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		new ChangeOfPat("Sarmad Ali");
+		new ChangeOfPat("Sarmad Ali","1234");
 
 	}
 }

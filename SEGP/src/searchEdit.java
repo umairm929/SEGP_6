@@ -12,7 +12,7 @@ import javax.swing.JButton;
 public class searchEdit extends JFrame {
 	private JTextField uob;
    public searchEdit(){
-	   setTitle("edit");
+	   setTitle("serach uob");
 	   setSize(300, 80);
 	   getContentPane().setLayout(null);
 	   
@@ -62,6 +62,6 @@ public class searchEdit extends JFrame {
    }
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-       new searchEdit();
+      // new searchEdit();
 	}
 }

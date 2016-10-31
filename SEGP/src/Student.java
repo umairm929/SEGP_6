@@ -26,7 +26,13 @@ public class Student extends JFrame{
 	}
 	
 	
+	public Student(){
+		
+	}
+	
+	
 	public Student(String name, String uob,String year, String department, String patname, String guiTiming, String contact, String Address) {
+		setTitle("Student");
 		setSize(500, 500);
 		
 		JMenuBar menuBar = new JMenuBar();
@@ -45,7 +51,7 @@ public class Student extends JFrame{
 		JButton btnNewButton_1 = new JButton("Change of PAT");
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				new ChangeOfPat(patname);
+				new ChangeOfPat(patname,uob);
 			}
 		});
 		menuBar.add(btnNewButton_1);
@@ -147,7 +153,7 @@ public class Student extends JFrame{
 	
 
 	public static void main(String[] args) {
-		new Student("Merry","140","3","cs","Faisal","4","03004061323","Faisalabad");
+		//new Student("Merry","140","3","cs","Faisal","4","03004061323","Faisalabad");
 
 	}
 	private static void addPopup(Component component, final JPopupMenu popup) {

@@ -30,9 +30,9 @@ public class Database {
 			rs=st.executeQuery(query1);
 			System.out.println(rs.next());
 			
-			while(rs.next()){
-				System.out.println(rs.getString(1) + rs.getString(2) + rs.getString(3));			
-			}
+//			while(rs.next()){
+//				System.out.println(rs.getString(1) + rs.getString(2) + rs.getString(3));			
+//			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -50,7 +50,7 @@ public class Database {
 		}
 	}
 	public static void main(String[] args) {
-		Database obj = new Database();
+		//Database obj = new Database();
 			
 		//obj.read(obj.query);
 	}
